@@ -19,6 +19,8 @@ Projects will be uploaded after graded.
 
   Coding
 
+- [Midterm Review](http://zoeyeoz.github.io/2018/02/20/571-Web-Technologies-Review/)
+
 ### 572 - Information Retrieval and Web Search Engines
 
 - HW2 | Web Crawler
