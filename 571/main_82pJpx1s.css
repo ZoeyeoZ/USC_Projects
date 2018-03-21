@@ -1,0 +1,229 @@
+/*@font-face {
+	font-family: "Calgary Bold Italic";
+	src: url("css/fonts/Harabara.eot");Harabara Bold', Arial, sans-serif;
+}*/
+
+body{
+	width: 660px;
+	margin: 0px auto;
+	font-family: helvetica;
+}
+a{
+	color: #605e5e;
+	text-decoration: none;
+}
+.outS{
+	overflow: hidden;
+	width: 660px;
+}
+.section{
+	width: 660px;
+	float:left;
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+  	background-size: 660px;
+  	overflow: hidden;
+  	background-position: center;
+}
+.bg{
+	position: fixed;
+	width: 660px;
+	z-index: -1;
+	overflow: hidden;
+}
+#sec2{
+	background-image:url(http://cs-server.usc.edu:45678/hw/hw3/images/image5.jpg);
+	background-position: center;
+  	/*background-position-y: 140px;*/
+  	background-position-y: calc(100% + 118px);
+}
+.bg img{
+	width: 1060px;
+	clip-path: inset(0px 200px 0px 200px);
+	margin-top: 25px;
+	margin-left: -200px;
+}
+.header{
+	float: left;
+	width: 660px;
+	background: #fff;
+}
+.address{
+	margin-top: 15px;
+	margin-left: 80px;
+}
+.address p{
+	text-align: left;
+	font-size: 7px;
+	color: #605e5e;
+	height: 10px;
+	margin: 0px;
+}
+.title{
+	text-align: center;
+	color: #bc9b5d;
+	height: 58px;
+	font-size: 30px;
+	margin-top: -30px;
+}
+.navbar{
+	border-top: 1px solid #dadada;
+	width: 660px;
+	margin: 0px auto;
+	list-style-type: none;
+    padding: 0;
+}
+.navbar li{
+	width: 108px;
+	height: 25px;
+	font-size: 8px;
+	float: left;
+}
+.navbar li a{
+	display: block;
+	text-align: center;
+	margin-top: 8px;
+}
+.navbar .space{
+	width: 60px;
+}
+.navbar .active {
+    color: #bc9b5d;
+}
+.trans{
+	float:left;
+	width: 660px;
+	height: 356px;
+	background: transparent;
+}
+.cont {
+	float: left;
+	width: 660px;
+	height: auto;
+	background: #fff;
+}
+.cont a{
+	float: left;
+	margin-top: 10px;
+	font-size: 8px;
+	color: #2f2e2e;
+}
+.cont a:hover{
+	color: #bababa;
+}
+.cont .titleC{
+	float: left;
+	margin-top: 5px;
+}
+.cont .titleC p{
+	font-family: 'Libre Baskerville', Sans Serif;
+	/*font-weight: bold;*/
+	font-size: 17px;
+	line-height: 20px;
+	color: #bc9b5d;
+	letter-spacing: 1px;
+	font-style: italic;
+}
+.cont .subtitle{
+	color: #605e5e;
+}
+.cont p{	
+	margin: 0px;
+	line-height: 10px;
+	font-size: 7px;
+	letter-spacing: 1px;
+}
+.cont img{
+	margin-top: 20px;
+	width: 100%;
+}
+#picL{
+	margin-top: 60px;
+}
+.leftC{
+	float: left;
+	margin-top: 50px;
+	margin-left: 70px;
+	width: 250px;
+}
+.leftC .contB{
+	margin-top: 40px;
+}
+.leftC .contB .contC p{
+	width: 150px;
+}
+.rightC{
+	float: left;
+	margin-top: 30px;
+	margin-left: 23px;
+	width: 250px;
+}
+.contC{
+	float: left;
+	margin-top:10px;
+	word-wrap: break-word; 
+	word-break: normal; 
+	color: #605e5e;
+	width: 200px;
+}
+.downC{
+	width: 520px;
+	height: auto;
+	margin: 0px auto;
+}
+.downC .contC{
+	position: absolute;
+	width: 218px;
+	height: 76px;
+	background: #fff;
+	margin: -215px auto auto 151px;
+}
+.downC .contC a{
+	font-family: 'Libre Baskerville', Sans Serif;
+	margin-top: 5px;
+	width: 100%;
+	text-align: center;
+	font-size: 15px;
+	color: #605e5e;
+}
+.downC .contC a:hover{
+	color: #bababa;
+}
+.downC .titleC p{
+	text-align: center;
+}
+.downC .contD{
+	float: left;
+	margin-bottom: 40px;
+}
+.downC .subtitle{
+	margin-top: 25px;
+	text-align: center;
+	font-size: 7px;
+}
+#sec2 .trans{
+	height: 270px;
+}
+.foot{
+	float: left;
+}
+.foot p{
+	margin: 0px;
+	margin-left: 420px;
+	font-size: 7px;
+	line-height: 9px;
+	color: #fff;
+}
+.footP{
+	float: left;
+	width: 660px;
+	height: 90px;
+	padding-top: 25px;
+	background-color: #bc9b5d;
+}
+.footspace{
+	float: left;
+	width: 660px;
+	height: 20px;
+	background-color: #fff;
+}
