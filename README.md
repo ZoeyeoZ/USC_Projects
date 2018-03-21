@@ -15,11 +15,15 @@ Projects will be uploaded after graded.
   
   [JSON Editor Online](http://jsoneditoronline.org)
 
-- HW5 | Apache, PHP and NGINX 
+- HW5 | Apache, PHP and NGINX; HW6 | Travel and Entertainment Search Server-side Scripting
 
-  Coding
+  Grading
 
 - [Midterm Review](http://zoeyeoz.github.io/2018/02/20/571-Web-Technologies-Review/)
+
+- HW7 | Cloud Setup: Amazon Web Services, Google Cloud Platform; HW8 | Ajax, JSON and Responsive Design
+
+  Coding
 
 ### 572 - Information Retrieval and Web Search Engines
 
@@ -27,4 +31,6 @@ Projects will be uploaded after graded.
 
   [How to write a basic Web Crawler](http://zoeyeoz.github.io/2018/02/09/How-to-write-a-basic-Web-Crawler/)
 
-  Coding
+- HW3 | Creating an Inverted Index Using a Hadoop Cluster 
+  
+  Grading
