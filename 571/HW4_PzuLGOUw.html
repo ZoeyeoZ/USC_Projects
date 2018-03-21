@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<HTML>
+<HEAD>
+	<META charset="UTF-8"></META>
+	<style>
+		h2{
+			margin-top: 200px;
+			margin-bottom: 0px;
+			font-family: 'Times';
+			text-align: center;
+		}
+		form{
+			font-family: 'Times';
+			width: 400px;
+			margin: 0px auto;
+			text-align: center;
+		}
+		input{
+			margin-top: 20px;
+		}
+	</style>
+</HEAD>
+<BODY>
+	<h2>Enter URL for Trucking List JSON File</h2>
+	<form name="JForm" method="POST">
+		<input type="text" name="file" maxlength="255" size="25" value=""/>
+		<br/>
+		<input type="button" name="submit" value="Submit Query" onclick="transJSON(this.form)"/>	
+	</form>
+
+	<script type="text/javascript">
+		function transJSON(JForm){
+			function loadJSON (url) {
+				var xmlhttp;
+				var jsonObj;
+				if (window.XMLHttpRequest){
+					// code for IE7+, Firefox, Chrome, Opera, Safari
+					xmlhttp = new XMLHttpRequest(); 
+				} else {
+					// code for IE6, IE5
+					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP"); 
+				}
+				
+				xmlhttp.open("GET",url,false); // "synchronous"
+				try {
+					xmlhttp.send();
+					if (xmlhttp.status != 200) {
+						alert("EROOR: JSON file does not exist!");
+						return;
+					}
+				} catch(exception){
+					alert("EROOR: JSON file does not exist!");
+					return;
+				}
+				try {
+					jsonObj = JSON.parse(xmlhttp.responseText);
+				} catch(exception){
+					alert("EROOR: JSON file is not well-formed!");
+					return;
+				}	
+				return jsonObj;
+			}
+
+			// isValid file?
+			var url = JForm.file.value;
+			if (url.length==0){
+				alert("EROOR: Please input a file!");
+				return;
+			}
+
+			// get jsonObj
+			var jsonObj = loadJSON(url);
+			if (jsonObj == "undefined" || jsonObj == null)
+				return;
+
+			var output = "";
+			var hWin;
+			var gErr = true;
+			if (window.ActiveXObject){ //if IE, simply execute script (due to async prop). 
+				if (jsonObj.parseError.errorCode != 0) {
+					var myErr = jsonObj.parseError;
+					alert("EROOR: JSON file is not well-formed!"+"\n"+jsonObj);
+					return;
+				} else {
+					generateHTML(jsonObj);
+					if (gErr) return;
+					hWin = window.open('','HW4','scrollbars=yes');
+					hWin.document.write(output);
+				}
+			} else { //else if FF, execute script once JSON object has loaded 
+				jsonObj.onload = generateHTML(jsonObj);
+				if (gErr) return;
+				hWin = window.open('','HW4','scrollbars=yes');
+				hWin.document.write(output); 
+			}
+				hWin.document.close(); 
+
+			function generateHTML(jsonObj) {
+				output = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">"
+					+ "<HTML><HEAD><title>JSON Parse Result</title><META charset=\"UTF-8\"></META>"
+					+ "<style>th, td{font-family: 'Times', Arial, helvetica;}li:first-child{font-weight: bold;}img{width: 200px; height: 100px;}</style>"
+					+ "</HEAD><BODY>"
+					+ "<table border=\"2\"><tbody>";
+
+				//add header
+				var Header = jsonObj.Mainline.Table.Header;
+				output += "<tr>";
+				for (var i = 0; i < Header.Data.length; i++)
+					output += "<th>" + Header.Data[i] + "</th>";
+				output += "</tr>";
+
+				//add row
+				// What if the whole value of row is empty??
+				if (!jsonObj.Mainline.Table.hasOwnProperty("Row") || jsonObj.Mainline.Table.Row.length == 0){
+					alert("ERROR: Not contain trucking company!");
+					return;
+				}
+				var Row = jsonObj.Mainline.Table.Row;
+				for (var i = 0; i < Row.length; i++){
+					// if imgage,... else if .. else if .. else 
+					var RowNodeList = Row[i]; //get properties of a row (an object)
+					var aircraft_keys = Object.keys(RowNodeList);
+					output += "<tr>";
+					for(var j = 0; j < aircraft_keys.length; j++){
+						var prop = aircraft_keys[j];
+						if (RowNodeList[prop] == null || RowNodeList[prop].length == 0 || aircraft_keys[j] == "Hubs" && (RowNodeList.Hubs.length == 0 || !RowNodeList.Hubs.hasOwnProperty("Hub") || RowNodeList.Hubs.Hub.length == 0)){
+							output += "<td></td>";
+							continue;
+						}
+						if (aircraft_keys[j] == "Hubs"){
+							output += "<td><ul>";
+							for (var j = 0; j < RowNodeList.Hubs.Hub.length; j++)
+								output += "<li>" + RowNodeList.Hubs.Hub[j] + "</li>";
+							output += "</ul></td>";
+						} else if (aircraft_keys[j] == "Logo"){
+							//handle images separately
+							output += "<td><img src=\"" + RowNodeList.Logo + "\"/></td>";
+						} else if (aircraft_keys[j] == "HomePage"){
+							output += "<td><a href=\"" + RowNodeList.HomePage + "\">" + RowNodeList.HomePage + "</a>"+ "</td>";
+						} else {
+							output += "<td>"+ RowNodeList[prop] +"</td>";
+						}
+					}
+					output += "</tr>";
+				}
+				output += "</tbody></table>"
+						+ "</body></html>";
+				gErr = false;
+			}
+		}
+	</script>
+
+</BODY>
+</HTML>
