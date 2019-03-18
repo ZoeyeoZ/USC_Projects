@@ -38,3 +38,16 @@ Projects will be uploaded after graded.
 - HW3 | Creating an Inverted Index Using a Hadoop Cluster 
   
 - HW4 | Indexing the Web Using Solr
+
+### 599 - Deep Learning
+
+- Assignment 1 | [Origin](https://github.com/csci599-dl/CSCI599-Assignment1)
+
+	- Implement the forward and backward passes as well as the neural network training procedure
+	- Implement the widely-used optimizers and training tricks including dropout
+	- Get familiar with TensorFlow by training and designing a network on your own
+	- Learn how to fine-tune trained networks
+	- Visualize the learned weights and activation maps of a ConvNet
+	- Use Grad-CAM to visualize and reason why ConvNet makes certain predictions
+
+
